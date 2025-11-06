@@ -1,0 +1,74 @@
+
+p {
+    width: max-content;
+}
+
+.bg-preview-card,
+.bg-card {
+    cursor: pointer;
+}
+
+.bg-img {
+    max-height: 200px;
+    border: 2px solid #000;
+} 
+
+
+.bg-preview-card {
+    border-radius: 8px;
+    box-shadow: 4px 6px 20px rgb(0, 0, 0, 25%);
+    background-color: rgb(255, 255, 255);
+}
+
+.bg-preview-card {
+    position: relative;
+    display: flex;
+    width: 300px;
+    height: 350px;
+    border-radius: 8px;
+}
+
+.bg-preview-img {
+    width: 300px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 8px;
+}
+
+.bg-preview-info {
+    position: absolute;
+    bottom: 0;
+    width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #fff;
+    font: 400 24px SonyEricssonLogo;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.bg-preview-name {
+    position: absolute;
+    top: 241px;
+    width: 100%;
+    padding: 8px 0px;
+    background-color: #000;
+    font: 800 24px Inter;
+    text-align: center;
+    color: #fff;
+}
+
+.bg-preview-info-time {
+    display: flex;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #FFD27D;
+    font: 400 26px SonyEricssonLogo;
+    align-items: center;
+}
+
+.bg-preview-info-time img {
+    width: 25px;
+}

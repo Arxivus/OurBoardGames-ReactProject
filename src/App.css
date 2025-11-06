@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "Vinque";
+  src: local("Vinque"),
+  url("/public/fonts/VinqueRG.ttf") format("ttf");
+  font-weight: normal;
+}
+
+
+body {
+  background-color: aliceblue;
+}
+
+#root {
+  
+}
+
+p, 
+h1, h2, h3, h4, h5 {
+  margin-top: 0;
+}
+
+.container {
+  width: 1140px;
+  margin: 0 auto;
+}
+
+header {
+  margin-bottom: 80px;
+  padding: 20px 0;
+  border: 3px solid #404465; 
+  background-color: #C4DAFF;
+}
+
+.header-items {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #404465;
+  font: 400 20px Vinque;
+  text-decoration: underline;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+}
+
+.bg-library-block {
+  display: flex;
+  gap: 100px;
+}
+
+
