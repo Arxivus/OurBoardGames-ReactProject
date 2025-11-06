@@ -4,6 +4,7 @@ import './components/GameCard/GameCard'
 import { GameCard, GamePreviewCard } from './components/GameCard/GameCard'
 import './components/GameCard/GameCard.css' 
 
+// npx json-server db.json - запуск сервера
 
 function App() {
   const [count, setCount] = useState(0)
