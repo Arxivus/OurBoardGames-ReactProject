@@ -13,11 +13,16 @@ function App() {
           <h1>Наша коллекция игр</h1>
         </div>
       </header>
-        <BoardGameList className='bg-library-block container'></BoardGameList>
+      <div className='operation-btns container'>
+        <button>Фильтровать по</button>
+        <button>Добавить</button>
+      </div>
+      <BoardGameList className='bg-library-block container'></BoardGameList>
         {/* <div className='bg-library-block container'>
           <GamePreviewCard className="bg-preview-card" name='Unmatched' genre='Дуэльная' imageUrl='/images/unmatched.jpg' avgTimeInMinutes='45'></GamePreviewCard>
         </div> */}
-        
+      <footer>
+      </footer> 
     </>
   )
 }

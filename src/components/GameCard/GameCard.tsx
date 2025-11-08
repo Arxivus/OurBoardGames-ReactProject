@@ -14,7 +14,7 @@ export type BoardGame = {
     priceInRubles?: number;
 }
 
-export const GameCard: FC<BoardGame> = ( { className, name, genre, avgTimeInMinutes, imageUrl, description, owner, priceInRubles } ) => {
+export const GameCard: FC<BoardGame> = ( { className, id, name, genre, avgTimeInMinutes, imageUrl, description, owner, priceInRubles } ) => {
 
     return (<div className={className}>
         <img className='bg-img' src={imageUrl} alt="Изображение игры" />
@@ -29,9 +29,9 @@ export const GameCard: FC<BoardGame> = ( { className, name, genre, avgTimeInMinu
     </div>)
 }
 
-export const GamePreviewCard: FC<BoardGame> = ( { className, name, genre, avgTimeInMinutes, imageUrl } ) => {
+export const GamePreviewCard: FC<BoardGame> = ( { className, id, name, genre, avgTimeInMinutes, imageUrl } ) => {
 
-    return (<div className={className}>
+    return (<div key={id} className={className}>
         <img className='bg-preview-img' src={imageUrl} alt="Изображение игры" />
         <div className='bg-preview-descr'>
             <h2 className='bg-preview-name'>{name}</h2>
