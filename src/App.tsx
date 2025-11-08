@@ -1,14 +1,10 @@
-import { useState } from 'react'
 import './App.css'
-import './components/GameCard/GameCard'
-import { GameCard, GamePreviewCard } from './components/GameCard/GameCard'
 import './components/GameCard/GameCard.css' 
+import { BoardGameList } from './components/BoardGameList/BoardGameList'
 
 // npx json-server db.json - запуск сервера
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <header>
@@ -17,16 +13,11 @@ function App() {
           <h1>Наша коллекция игр</h1>
         </div>
       </header>
-        {/* <div>
-          <button onClick={() => setCount((count) => count + 1)}>
-            {count}
-          </button>
+        <BoardGameList className='bg-library-block container'></BoardGameList>
+        {/* <div className='bg-library-block container'>
+          <GamePreviewCard className="bg-preview-card" name='Unmatched' genre='Дуэльная' imageUrl='/images/unmatched.jpg' avgTimeInMinutes='45'></GamePreviewCard>
         </div> */}
-      <div className='bg-library-block container'>
-        <GamePreviewCard className="bg-preview-card" name='Unmatched' genre='Дуэльная' imageUrl='/images/unmatched.jpg' avgPlayTime='45'></GamePreviewCard>
-        <GamePreviewCard className="bg-preview-card" name='Осколки бесконечности' genre='Колодострой' imageUrl='/images/infshards.jpg' avgPlayTime='30'></GamePreviewCard>
-        <GamePreviewCard className="bg-preview-card" name='Осколки бесконечности' genre='Колодострой' imageUrl='/images/infshards.jpg' avgPlayTime='30'></GamePreviewCard>
-      </div>
+        
     </>
   )
 }

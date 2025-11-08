@@ -47,7 +47,9 @@ header {
 
 .bg-library-block {
   display: flex;
+  flex-wrap: wrap;
   gap: 100px;
+  padding-bottom: 100px;
 }
 
 

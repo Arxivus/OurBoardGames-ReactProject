@@ -1,44 +1,51 @@
 import type { FC } from 'react'
 
 
-interface ComponentProps {
+export type BoardGame = {
+    id?: number;
     className?: string;
     name: string;
-    genre: string;
-    avgPlayTime?: string;
+    genre: Array<string>;
+    players?: string;
+    avgTimeInMinutes?: string;
     imageUrl?: string;
     description?: string;
-    ownerName?: string;
-    purchasePrice?: number;
+    owner?: string;
+    priceInRubles?: number;
 }
 
-export const GameCard: FC<ComponentProps> = ( { className, name, genre, avgPlayTime, imageUrl, description, ownerName, purchasePrice } ) => {
+export const GameCard: FC<BoardGame> = ( { className, name, genre, avgTimeInMinutes, imageUrl, description, owner, priceInRubles } ) => {
 
     return (<div className={className}>
         <img className='bg-img' src={imageUrl} alt="Изображение игры" />
         <h2>{name}</h2>
         <div>
             <p>Жанр: <b>{genre}</b></p>
-            <p>Среднее время партии: <b>{avgPlayTime}</b></p>
+            <p>Среднее время партии: <b>{avgTimeInMinutes}</b></p>
             <p>Краткое описание: {description}</p>
-            <p>Владелец коробки: <b>{ownerName}</b></p>
-            <p>Цена покупки: <b>{purchasePrice}</b></p>
+            <p>Владелец коробки: <b>{owner}</b></p>
+            <p>Цена покупки: <b>{priceInRubles}</b></p>
         </div>
     </div>)
 }
 
-export const GamePreviewCard: FC<ComponentProps> = ( { className, name, genre, avgPlayTime, imageUrl } ) => {
+export const GamePreviewCard: FC<BoardGame> = ( { className, name, genre, avgTimeInMinutes, imageUrl } ) => {
 
     return (<div className={className}>
         <img className='bg-preview-img' src={imageUrl} alt="Изображение игры" />
-        <h2 className='bg-preview-name'>{name}</h2>
-        <div className='bg-preview-info'>
-            <p><b>{genre}</b></p>
-            <p className='bg-preview-info-time'>
-                <img src="/images/hourglass.png" alt="" />
-                <b>{avgPlayTime}</b>
-            </p>
+        <div className='bg-preview-descr'>
+            <h2 className='bg-preview-name'>{name}</h2>
+            <div className='bg-preview-info'>
+                <div className='bg-preview-info-genres'>
+                    {genre? (genre.map(item => (<p><b>{item}</b></p>))) : (<p>Жанр не указан</p>)}
+                </div>
+                <p className='bg-preview-info-time'>
+                    <img src="/images/hourglass.png" alt="" />
+                    <b>{avgTimeInMinutes}</b>
+                </p>
+            </div>
         </div>
+        
     </div>)
 }
 

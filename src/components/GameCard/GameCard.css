@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "Inter-Regular";
+  src: local("Inter Regular"),
+  url("/public/fonts/Inter-Regular.otf") format("otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Inter-Bold";
+  src: local("Inter Bold"),
+  url("/public/fonts/Inter-Bold.otf") format("otf");
+  font-weight: 800;
+}
 
 p {
     width: max-content;
@@ -35,9 +48,14 @@ p {
     border-radius: 8px;
 }
 
-.bg-preview-info {
+.bg-preview-descr {
     position: absolute;
     bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-preview-info {
     width: 270px;
     display: flex;
     align-items: center;
@@ -50,14 +68,18 @@ p {
 }
 
 .bg-preview-name {
-    position: absolute;
-    top: 241px;
     width: 100%;
-    padding: 8px 0px;
+    padding: 5px 0px;
     background-color: #000;
-    font: 800 24px Inter;
+/*     font: 800 24px Inter-Bold; */
     text-align: center;
     color: #fff;
+}
+
+.bg-preview-info-genres{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .bg-preview-info-time {
