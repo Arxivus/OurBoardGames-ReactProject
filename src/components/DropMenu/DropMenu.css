@@ -1,0 +1,25 @@
+.dropMenu {
+    position: absolute;
+    top: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.dropMenu-item {
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    font-size: 22px;
+    color: #404465;
+    padding: 10px 30px 10px 30px;
+    border: 3px solid #404465;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #FFB938;
+    transition: padding-top .2s ease-in;
+}
+
+.dropMenu-item:hover {
+    padding-top: 50px;
+}

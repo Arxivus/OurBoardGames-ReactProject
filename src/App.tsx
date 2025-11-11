@@ -1,6 +1,8 @@
 import './App.css'
 import './components/GameCard/GameCard.css' 
 import { BoardGameList } from './components/BoardGameList/BoardGameList'
+import { IconButton } from './components/IconButton/IconButton'
+import { DropMenu } from './components/DropMenu/DropMenu'
 
 // npx json-server db.json - запуск сервера
 
@@ -11,16 +13,14 @@ function App() {
         <div className='container header-items'>
           <img className='logo' src='/images/logo.png'/>
           <h1>Наша коллекция игр</h1>
+          <DropMenu tabs={['Коллекция', 'Статистика', 'Игроки']} routsName={['/', '/stats', '/players']}></DropMenu>
         </div>
       </header>
       <div className='operation-btns container'>
-        <button>Фильтровать по</button>
-        <button>Добавить</button>
+        <IconButton text='Фильтровать' iconUrl='/images/arrow.svg'></IconButton>
+        <IconButton text='Добавить' iconUrl='/images/plus.svg'></IconButton>
       </div>
       <BoardGameList className='bg-library-block container'></BoardGameList>
-        {/* <div className='bg-library-block container'>
-          <GamePreviewCard className="bg-preview-card" name='Unmatched' genre='Дуэльная' imageUrl='/images/unmatched.jpg' avgTimeInMinutes='45'></GamePreviewCard>
-        </div> */}
       <footer>
       </footer> 
     </>
