@@ -1,12 +1,11 @@
-import './App.css'
-import './components/GameCard/GameCard.css' 
-import { BoardGameList } from './components/BoardGameList/BoardGameList'
-import { IconButton } from './components/IconButton/IconButton'
-import { DropMenu } from './components/DropMenu/DropMenu'
+import './Collection.css'
+import { BoardGameList } from '../components/BoardGameList/BoardGameList'
+import { IconButton } from '../components/IconButton/IconButton'
+import { DropMenu } from '../components/DropMenu/DropMenu'
 
 // npx json-server db.json - запуск сервера
 
-function App() {
+function Collection() {
   return (
     <>
       <header>
@@ -27,4 +26,4 @@ function App() {
   )
 }
 
-export default App
+export default Collection

@@ -1,27 +1,13 @@
-@font-face {
-  font-family: "Vinque";
-  src: local("Vinque"),
-  url("/public/fonts/VinqueRG.ttf") format("ttf");
-  font-weight: normal;
-}
 
-@font-face {
-  font-family: "CrimsonBold";
-  src: local("Crimson Text Bold"),
-  url("/public/fonts/CrimsonText-Bold.ttf") format("ttf");
-  font-weight: bold;
-}
 
 
 body {
   background-color: aliceblue;
 }
 
-#root {}
-
 footer {
   height: 80px;
-  background-color: #404465;
+  background-color: var(--main-color-dark);
 }
 
 p, 
@@ -38,22 +24,24 @@ header {
   position: relative;
   margin-bottom: 80px;
   padding: 20px 0;
-  border: 3px solid #404465; 
-  background-color: #C4DAFF;
+  border: 3px solid var(--main-color-dark); 
+  border-left: none;
+  border-right: none;
+  background-color: var(--main-color-lite);
 }
 
 .header-items {
   display: flex;
   align-items: center;
   gap: 30px;
-  color: #404465;
-  font: 400 20px Vinque;
+  color: var(--main-color-dark);
+  font: 400 18px Vinque;
   text-decoration: underline;
 }
 
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
 }
 
 .bg-library-block {

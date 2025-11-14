@@ -11,12 +11,13 @@
     position: relative;
     text-decoration: none;
     font-size: 22px;
-    color: #404465;
+    font-family: Vinque;
+    color: var(--main-color-dark);
     padding: 10px 30px 10px 30px;
-    border: 3px solid #404465;
+    border: 3px solid var(--main-color-dark);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    background-color: #FFB938;
+    background-color: var(--accent-color);
     transition: padding-top .2s ease-in;
 }
 

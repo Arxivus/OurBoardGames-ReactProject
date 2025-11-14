@@ -25,7 +25,17 @@ export const BoardGameList = (props: BoardGameListProps) => {
     return (<div className={props.className}>
         {boardGames? (
             boardGames.map(obj => (
-                <GamePreviewCard className="bg-preview-card" id={obj.id} name={obj.name} genre={obj.genre} imageUrl={obj.imageUrl} avgTimeInMinutes={obj.avgTimeInMinutes}></GamePreviewCard>
+                <GamePreviewCard className="bg-preview-card" 
+                    id={obj.id} 
+                    name={obj.name} 
+                    genre={obj.genre}
+                    players={obj.players}
+                    avgTimeInMinutes={obj.avgTimeInMinutes} 
+                    imageUrl={obj.imageUrl}
+                    description={obj.description}  
+                    owner={obj.owner}
+                    priceInRubles={obj.priceInRubles}>   
+                </GamePreviewCard>
             ))
         ): (<p>Ooooopsss....</p>) }
     </div>)

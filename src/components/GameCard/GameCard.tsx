@@ -1,5 +1,4 @@
-import type { FC } from 'react'
-
+import { useNavigate } from 'react-router'
 
 export type BoardGame = {
     id?: number;
@@ -14,34 +13,26 @@ export type BoardGame = {
     priceInRubles?: number;
 }
 
-export const GameCard: FC<BoardGame> = ( { className, id, name, genre, avgTimeInMinutes, imageUrl, description, owner, priceInRubles } ) => {
+export const GamePreviewCard = ( props: BoardGame ) => {
 
-    return (<div className={className}>
-        <img className='bg-img' src={imageUrl} alt="Изображение игры" />
-        <h2>{name}</h2>
-        <div>
-            <p>Жанр: <b>{genre}</b></p>
-            <p>Среднее время партии: <b>{avgTimeInMinutes}</b></p>
-            <p>Краткое описание: {description}</p>
-            <p>Владелец коробки: <b>{owner}</b></p>
-            <p>Цена покупки: <b>{priceInRubles}</b></p>
-        </div>
-    </div>)
-}
+    const navigate = useNavigate()
+    const handleGameCardClick = (game: BoardGame) => {
+        navigate(`/${game.id}`, {
+            state: {game}
+        })
+    }
 
-export const GamePreviewCard: FC<BoardGame> = ( { className, id, name, genre, avgTimeInMinutes, imageUrl } ) => {
-
-    return (<div key={id} className={className}>
-        <img className='bg-preview-img' src={imageUrl} alt="Изображение игры" />
+    return (<div key={props.id} className={props.className} onClick={() => handleGameCardClick(props)}>
+        <img className='bg-preview-img' src={props.imageUrl} alt="Изображение игры" />
         <div className='bg-preview-descr'>
-            <h2 className='bg-preview-name'>{name}</h2>
+            <h2 className='bg-preview-name'>{props.name}</h2>
             <div className='bg-preview-info'>
                 <div className='bg-preview-info-genres'>
-                    {genre? (genre.map(item => (<p><b>{item}</b></p>))) : (<p>Жанр не указан</p>)}
+                    {props.genre? (props.genre.map(item => (<p><b>{item}</b></p>))) : (<i>Жанр не указан</i>)}
                 </div>
                 <p className='bg-preview-info-time'>
                     <img src="/images/hourglass.png" alt="" />
-                    <b>{avgTimeInMinutes}</b>
+                    <b>{props.avgTimeInMinutes}</b>
                 </p>
             </div>
         </div>

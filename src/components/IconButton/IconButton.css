@@ -3,27 +3,30 @@
     gap: 10px;
     align-items: center;
     cursor: pointer;
-    padding: 5px 12px;
-    color: #404465;
+    padding: 5px 12px 1px 12px;
+    color: var(--main-color-dark);
     font-size: 20px;
     font-weight: bold;
-    background-color: #C4DAFF;
-    border: 3px solid #404465;
+    background-color: var(--main-color-lite);
+    border: 3px solid var(--main-color-dark);
     border-radius: 8px;
 }
 
 .iconBtn p {
+    font-family: Inter;
     margin-bottom: 4px;
 }
 
 .iconBtn:hover {
-    background-color: #d5e4ff;
+    background-color: var(--main-color-lite);
+    filter: brightness(1.08);
 }
 
 .iconBtn:nth-child(2) {
-    background-color: #FFD27D;
+    background-color: var(--accent-color-lite);
 }
 
 .iconBtn:nth-child(2):hover {
-    background-color: #fee0a8;
+    background-color: var(--accent-color-lite);
+    filter: brightness(1.08);
 }
