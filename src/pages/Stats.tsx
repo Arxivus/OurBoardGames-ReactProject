@@ -1,5 +1,6 @@
 import './Stats.css'
 import { DropMenu } from '../components/DropMenu/DropMenu'
+import { Form } from '../components/Form/Form'
 
 function Stats() {
   return (
@@ -11,7 +12,9 @@ function Stats() {
           <DropMenu tabs={['Коллекция', 'Статистика', 'Игроки']} routsName={['/', '/stats', '/players']}></DropMenu>
         </div>
       </header>
-     
+      <section className='container'>
+        
+      </section>
       <footer>
       </footer> 
     </>

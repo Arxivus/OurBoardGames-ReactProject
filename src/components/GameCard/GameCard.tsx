@@ -22,7 +22,7 @@ export const GamePreviewCard = ( props: BoardGame ) => {
         })
     }
 
-    return (<div key={props.id} className={props.className} onClick={() => handleGameCardClick(props)}>
+    return (<li key={props.id} className={props.className} onClick={() => handleGameCardClick(props)}>
         <img className='bg-preview-img' src={props.imageUrl} alt="Изображение игры" />
         <div className='bg-preview-descr'>
             <h2 className='bg-preview-name'>{props.name}</h2>
@@ -37,6 +37,6 @@ export const GamePreviewCard = ( props: BoardGame ) => {
             </div>
         </div>
         
-    </div>)
+    </li>)
 }
 

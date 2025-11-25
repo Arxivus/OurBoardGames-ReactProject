@@ -33,15 +33,13 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --main-color-lite: #C4DAFF;
+  --main-color-lite: #d6e4fd;
   --main-color-dark: #404465;
   --accent-color: #FFB938;
   --accent-color-lite: #FFC65D;
@@ -69,6 +67,13 @@ h1, h2, h3, h4, p {
   margin: 0;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+  background-color: #FFF;
+  max-width: max-content;
+}
+
 footer {
   margin-top: auto;
 }
@@ -76,6 +81,6 @@ footer {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #fff;
+    background-color: #f9f9f9;
   }
 }

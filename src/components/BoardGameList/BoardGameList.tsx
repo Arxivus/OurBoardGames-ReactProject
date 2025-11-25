@@ -20,7 +20,7 @@ export const BoardGameList = (props: BoardGameListProps) => {
         }
 
         getObjects() 
-    }, [])
+    }, [boardGames])
     
     return (<div className={props.className}>
         {boardGames? (

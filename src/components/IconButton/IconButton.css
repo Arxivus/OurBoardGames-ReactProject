@@ -3,13 +3,13 @@
     gap: 10px;
     align-items: center;
     cursor: pointer;
-    padding: 5px 12px 1px 12px;
+    padding: 10px 15px 3px 15px;
     color: var(--main-color-dark);
     font-size: 20px;
     font-weight: bold;
-    background-color: var(--main-color-lite);
-    border: 3px solid var(--main-color-dark);
     border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow .3s ease;
 }
 
 .iconBtn p {
@@ -18,15 +18,9 @@
 }
 
 .iconBtn:hover {
-    background-color: var(--main-color-lite);
-    filter: brightness(1.08);
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .iconBtn:nth-child(2) {
-    background-color: var(--accent-color-lite);
-}
-
-.iconBtn:nth-child(2):hover {
-    background-color: var(--accent-color-lite);
-    filter: brightness(1.08);
+    background-color: var(--main-color-lite);
 }

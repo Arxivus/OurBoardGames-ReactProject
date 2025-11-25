@@ -1,15 +1,17 @@
 import './IconButton.css'
 
-interface IconButtonProps{
+export type IconButtonProps = {
     iconUrl: string;
-    text?: string; 
+    text?: string;
+    className?: string;
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void; 
 }
 
-export const IconButton = (props: IconButtonProps, ) => {
+export const IconButton = (props: IconButtonProps) => {
     return (
-        <div className="iconBtn">  
+        <button onClick={props.onClick} className={props.className}>  
             <p>{props.text}</p>
             <img src={props.iconUrl} />
-        </div>
+        </button>
     )
 }
