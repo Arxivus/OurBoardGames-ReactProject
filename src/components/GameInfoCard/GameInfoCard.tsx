@@ -6,8 +6,8 @@ export const GameInfoCard = (props: BoardGame) => {
     return (
         <div className='container'>
             <div className='gameInfoCard'>
-                <img src={props.imageUrl}/>
-                <div className='gameInfo'>
+                <img className='shadow-effect' src={props.imageUrl}/>
+                <div className='gameInfo shadow-effect'>
                     <div className='gameInfo-title'>
                         <h2>{props.name}</h2>
                         <div className='line'></div>

@@ -30,7 +30,7 @@ function handleFormSubmit(event: FormEvent) {
     };
 
     
-    //axios.post('http://localhost:3000/bg-objects', gameData)
+    /*axios.post('http://localhost:3000/bg-objects', gameData)*/
   
     console.log(gameData);
 

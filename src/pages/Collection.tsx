@@ -8,10 +8,6 @@ import { useState } from 'react'
 
 // npx json-server db.json - запуск сервера
 
-const openModal = () => {
-  console.log('opened');
-} 
-
 
 function Collection() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,12 +22,12 @@ function Collection() {
         </div>
       </header>
       <div className='operation-btns container'>
-        <IconButton className='iconBtn' onClick={() => {}} text='Фильтровать' iconUrl='/images/arrow.svg'></IconButton>
-        <IconButton className='iconBtn' onClick={() => setIsOpen(true)} text='Добавить' iconUrl='/images/plus.svg'></IconButton>
+        <IconButton className='shadow-effect' onClick={() => {}} text='Фильтровать' iconUrl='/images/arrow.svg'></IconButton>
+        <IconButton className='shadow-effect' onClick={() => setIsOpen(true)} text='Добавить' iconUrl='/images/plus.svg'></IconButton>
       </div>
       <BoardGameList className='bg-library-block container'></BoardGameList>
       { isOpen? 
-        (<ModalWindow showAnimate={true} onCloseModal={() => setIsOpen(false)}>
+        (<ModalWindow onCloseModal={() => setIsOpen(false)}>
           <Form onSubmit={() => {}} className='bg-form' buttonText='Добавить'  titleText='Добавление игры'>
             <input name='name' type="text" placeholder='Название'/>
             <select name='genre'>

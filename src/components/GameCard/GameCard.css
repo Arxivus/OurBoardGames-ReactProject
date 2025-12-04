@@ -16,12 +16,6 @@
     height: 350px;
     border-radius: 8px;
     background-color: #fff;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: box-shadow .3s ease;
-}
-
-.bg-preview-card:hover {
-    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .bg-preview-img {
@@ -54,7 +48,6 @@
     width: 100%;
     padding: 5px 0px;
     background-color: #000;
-/*     font: 800 24px Inter-Bold; */
     text-align: center;
     color: #fff;
 }
@@ -68,9 +61,6 @@
 .bg-preview-info-time {
     display: flex;
     padding: 5px;
-    /* border: 3px solid #000;
-    border-radius: 8px;
-    background-color: var(--accent-color-lite); */
     font: 400 26px SonyEricssonLogo;
     align-items: center;
 }

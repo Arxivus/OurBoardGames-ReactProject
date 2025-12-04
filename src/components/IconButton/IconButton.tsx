@@ -4,14 +4,14 @@ export type IconButtonProps = {
     iconUrl: string;
     text?: string;
     className?: string;
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void; 
+    onClick: (event: React.MouseEvent<HTMLDivElement>) => void; 
 }
 
 export const IconButton = (props: IconButtonProps) => {
     return (
-        <button onClick={props.onClick} className={props.className}>  
+        <div onClick={props.onClick} className={`iconBtn ${props.className}`}>  
             <p>{props.text}</p>
             <img src={props.iconUrl} />
-        </button>
+        </div>
     )
 }

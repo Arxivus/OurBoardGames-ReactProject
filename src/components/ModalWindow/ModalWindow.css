@@ -21,11 +21,17 @@
     justify-content: center; 
 }
 
-.modalClose {
-    position: absolute;
-    top: 8%;
-    color: #FFF;
-    background-color: var(--accent-color);
+.modalWindow-block {
+    background-color: #fff;
     border-radius: 8px;
-    padding: 10px;
 }
+
+.modalWindow-close {
+    width: max-content;
+    display: flex;
+    padding: 0;
+    gap: 0;
+    margin: 30px;
+    justify-self: end;
+    box-shadow: none;
+}   

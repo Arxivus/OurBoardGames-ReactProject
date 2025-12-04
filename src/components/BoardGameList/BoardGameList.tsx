@@ -16,16 +16,16 @@ export const BoardGameList = (props: BoardGameListProps) => {
             const response = await axios.get('http://localhost:3000/bg-objects')
             const objects = await response.data
             setBoardGames(objects)
-            console.log(objects);
+            console.log('1');
         }
 
         getObjects() 
-    }, [boardGames])
+    }, []) 
     
     return (<div className={props.className}>
         {boardGames? (
             boardGames.map(obj => (
-                <GamePreviewCard className="bg-preview-card" 
+                <GamePreviewCard className="bg-preview-card shadow-effect" 
                     id={obj.id} 
                     name={obj.name} 
                     genre={obj.genre}

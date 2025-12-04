@@ -1,23 +1,23 @@
 import "./ModalWindow.css"
+import { IconButton } from "../IconButton/IconButton"
 
 type ModalWindowProps = {
-    showAnimate: boolean;
     onCloseModal: () => void;
     children: React.ReactNode;
 }
 
 export const ModalWindow = ( props: ModalWindowProps ) => {
 
-    const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (e.currentTarget === e.target) {
-            console.log(e.currentTarget);
+    const closeModal = () => {
             props.onCloseModal()
-        }
     } 
 
     return <div className='modalWindow'>
-            <div className="modalWindow-wrapper" onClick={closeModal}>
-                {props.children}
+            <div className="modalWindow-wrapper" >
+                <div className="modalWindow-block">
+                    <IconButton className="modalWindow-close" iconUrl="../images/cross.png" onClick={closeModal}></IconButton>
+                    {props.children} 
+                </div>
             </div>
     </div>
 }

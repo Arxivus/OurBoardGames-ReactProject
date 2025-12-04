@@ -14,7 +14,7 @@
     font-family: Vinque;
     color: var(--main-color-dark);
     padding: 10px 30px 10px 30px;
-    border: 3px solid var(--main-color-dark);
+    border-top: 3px solid var(--main-color-dark);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     background-color: var(--accent-color);
