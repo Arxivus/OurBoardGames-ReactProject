@@ -1,0 +1,39 @@
+.matches-list {
+    display: flex;
+    gap: 45px;
+}
+
+.matches-list-item {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid var(--card-border-color);
+    font-size: 18px;
+}
+
+.match-game {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.match-winner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.match-players {
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    gap: 10px;
+}
+
+.match-players,
+.match-winner,
+.match-game {
+    padding: 8px 20px;
+    border: 1px solid var(--card-border-color);
+}

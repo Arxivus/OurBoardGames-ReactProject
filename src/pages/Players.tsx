@@ -38,7 +38,7 @@ function Players() {
       <div className='operation-btns container'>
               <IconButton className='shadow-effect' onClick={() => {}} text='Фильтровать' iconUrl='/images/arrow.svg'></IconButton>
               <IconButton className='shadow-effect' onClick={() => setIsOpen(true)} text='Добавить' iconUrl='/images/plus.svg'></IconButton>
-            </div>
+      </div>
       <section className='players-block container'>
         <PlayersList players={players}></PlayersList>
         { isOpen? 

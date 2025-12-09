@@ -1,13 +1,14 @@
 import type { FormEvent } from "react";
-import type { BoardGame } from "../GameCard/GameCard";
 import axios from 'axios'
 import "./Form.css"
+import type { BoardGame } from "../GameCard/GameCard";
 import type { Player } from "../PlayersList/PlayersList";
+import type { Match } from "../MatchesList/MatchesList"
 
 export type FormProps = {
     actionType?: 'POST' | 'GET';
     postUrl: string;
-    dataType: 'BoardGame' | 'Player';
+    dataType: 'BoardGame' | 'Player' | 'Match';
     className?: string;
     buttonText: string;
     titleText: string;
@@ -24,6 +25,12 @@ function isBoardGameValid(formData: FormData) {
 }
 
 function isPlayerValid(formData: FormData) {
+    if (1 == 1) {
+        return true
+    }  
+}
+
+function isMatchValid(formData: FormData) {
     if (1 == 1) {
         return true
     }  
@@ -51,6 +58,16 @@ function generatePlayerObject(formData: FormData) {
     return playerData
 }
 
+function generateMatchObject(formData: FormData) {
+    const playersNames = formData.get('playersNames') as string
+    const matchData: Match = {
+        gameName: formData.get('gameName') as string,
+        winnerName: formData.get('winnerName') as string,
+        playersNames: playersNames.split(',').map(item => item.trim()),
+    }
+    return matchData
+}
+
 export const Form = ( props: FormProps) => {
 
     const handleFormSubmit = (event: FormEvent) => { 
@@ -67,6 +84,11 @@ export const Form = ( props: FormProps) => {
         case 'Player':
             if (isPlayerValid(formData)) { object = generatePlayerObject(formData) }
             break;
+
+        case 'Match':
+            if (isMatchValid(formData)) { object = generateMatchObject(formData) }
+            break;
+        
         }
         
         if (object != null) {
