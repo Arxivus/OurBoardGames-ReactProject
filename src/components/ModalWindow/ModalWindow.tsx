@@ -9,7 +9,7 @@ type ModalWindowProps = {
 export const ModalWindow = ( props: ModalWindowProps ) => {
 
     const closeModal = () => {
-            props.onCloseModal()
+        props.onCloseModal()
     } 
 
     return <div className='modalWindow'>

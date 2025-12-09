@@ -1,8 +1,21 @@
 import './GameInfoCard.css'
 import type { BoardGame } from '../GameCard/GameCard'
+import axios from 'axios'
+import { useNavigate } from 'react-router'
 
-// route по /:id с рендером навигации и карточки этой
+
 export const GameInfoCard = (props: BoardGame) => {
+
+    const navigate = useNavigate()
+    function deleteGame() {
+        axios.delete(`http://localhost:3000/bg-objects/${props.id}`)
+        .then(() => {
+            navigate(-1)
+        })
+        .catch(error => console.log(error.message))
+        
+    }
+
     return (
         <div className='container'>
             <div className='gameInfoCard'>
@@ -22,8 +35,11 @@ export const GameInfoCard = (props: BoardGame) => {
                         </span>
                         <span>Кол-во игроков: <b>{props.players}</b></span>
                     </div>
-                    <p>{props.description}</p>
-                    <span>Владелец: <b>{props.owner}</b></span>
+                    <p className='gameInfo-descr'>{props.description}</p>
+                    <div className='gameInfo-extra-block'>
+                        <span>Владелец: <b>{props.owner}</b></span>
+                        <button onClick={deleteGame} className='game-delete-btn'><b><p>Удалить игру</p></b></button>
+                    </div>
                 </div>
             </div>
         </div>

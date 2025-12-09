@@ -72,7 +72,7 @@ button {
   border: none;
   background-color: #FFF;
   max-width: max-content;
-  font-family: 'CrimsonBold';
+  /* font-family: 'CrimsonBold'; */
 }
 
 footer {

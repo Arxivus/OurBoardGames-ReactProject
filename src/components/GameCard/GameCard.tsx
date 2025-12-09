@@ -28,7 +28,7 @@ export const GamePreviewCard = ( props: BoardGame ) => {
             <h2 className='bg-preview-name'>{props.name}</h2>
             <div className='bg-preview-info'>
                 <div className='bg-preview-info-genres'>
-                    {props.genre? (props.genre.map(item => (<p><b>{item}</b></p>))) : (<i>Жанр не указан</i>)}
+                    {props.genre? (props.genre.map((item, index) => (<p key={index}><b>{item}</b></p>))) : (<i>Жанр не указан</i>)}
                 </div>
                 <p className='bg-preview-info-time'>
                     <img src="/images/hourglass.png" alt="" />

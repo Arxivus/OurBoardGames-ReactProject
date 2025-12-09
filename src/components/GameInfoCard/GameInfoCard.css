@@ -34,7 +34,7 @@
 
 .gameInfo h2 {
     font-size: 32px;
-    font-family: Inter;
+    font-family: Vinque;
 }
 
 .gameInfo .line {
@@ -76,10 +76,23 @@
     background-color: var(--main-color-lite);
 }
 
-.gameInfo p {
+.gameInfo-descr {
     text-indent: 30px;
     font-size: 18px;
     padding: 15px;
     border: 2px solid var(--card-border-color);
     border-radius: 8px;
+}
+
+.gameInfo-extra-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-delete-btn {
+    color: #FFF;
+    background-color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
 }

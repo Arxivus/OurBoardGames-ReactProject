@@ -7,7 +7,6 @@ import './GameInfo.css'
 function GameInfo() {
     const location = useLocation()
     const obj = location.state.game as BoardGame
-    console.log(obj);
 
     return (
         <>

@@ -164,17 +164,30 @@
       "priceInRubles": 400
     },
     {
-      "id": "2e94",
-      "name": "test",
+      "id": "b258",
+      "name": "Битва за Рокуган",
       "genre": [
         "Стратегия"
       ],
-      "players": "test",
-      "avgTimeInMinutes": "30",
+      "players": "Битва за Рокуган",
+      "avgTimeInMinutes": "90",
       "imageUrl": "/images/noimage.png",
       "description": null,
-      "owner": "ya",
-      "priceInRubles": 1200
+      "owner": "Архивус",
+      "priceInRubles": 2500
+    },
+    {
+      "id": "b982",
+      "name": "Долина Вечности",
+      "genre": [
+        "Семейная"
+      ],
+      "players": "Долина Вечности",
+      "avgTimeInMinutes": "90",
+      "imageUrl": "/images/noimage.png",
+      "description": null,
+      "owner": "Архивус",
+      "priceInRubles": 2000
     }
   ]
 }
