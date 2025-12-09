@@ -1,0 +1,38 @@
+.players-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.players-list-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 15px;
+    border-bottom: 2px solid var(--main-color-dark);
+    background-color: var(--main-color-lite);
+}
+
+.players-list-item:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.players-list-item:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.players-list-item:hover {
+    background-color: var(--main-color-lite);
+    filter: brightness(1.05);
+}
+
+.players-list-item p {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--main-color-dark);
+}
+
+.players-icon {
+    max-width: 45px;
+}

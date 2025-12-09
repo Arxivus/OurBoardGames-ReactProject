@@ -17,9 +17,11 @@ function Collection() {
   
   const getBoardGames = () => {
     axios.get('http://localhost:3000/bg-objects')
-      .then(response => (setBoardGames(response.data)))
+      .then(response => {
+        setBoardGames(response.data)
+        console.log('Игры загружены');
+      })
       .catch(error => console.log(error.message));
-      console.log('Загружено');
   }
   
   useEffect(() => { 
@@ -42,7 +44,8 @@ function Collection() {
       <BoardGameList boardGames={boardGames} className='bg-library-block container'></BoardGameList>
       { isOpen? 
         (<ModalWindow onCloseModal={() => setIsOpen(false)}>
-          <Form onSubmit={() => {}} onClose={() => setIsOpen(false)} onObjectsEdit={() => getBoardGames()} className='bg-form' buttonText='Добавить'  titleText='Добавление игры'>
+          <Form onSubmit={() => {}} onClose={() => setIsOpen(false)} onObjectsEdit={() => getBoardGames()}
+            postUrl='http://localhost:3000/bg-objects' dataType='BoardGame' className='bg-form' buttonText='Добавить'  titleText='Добавление игры'>
             <input name='name' type="text" placeholder='Название'/>
             <select name='genre'>
               <option value="Жанр" disabled selected hidden>Жанр</option>

@@ -2,9 +2,12 @@ import type { FormEvent } from "react";
 import type { BoardGame } from "../GameCard/GameCard";
 import axios from 'axios'
 import "./Form.css"
+import type { Player } from "../PlayersList/PlayersList";
 
 export type FormProps = {
     actionType?: 'POST' | 'GET';
+    postUrl: string;
+    dataType: 'BoardGame' | 'Player';
     className?: string;
     buttonText: string;
     titleText: string;
@@ -14,7 +17,13 @@ export type FormProps = {
     onObjectsEdit?: () => void;
 }
 
-function isValidFormData(formData: FormData) {
+function isBoardGameValid(formData: FormData) {
+    if (1 == 1) {
+        return true
+    }  
+}
+
+function isPlayerValid(formData: FormData) {
     if (1 == 1) {
         return true
     }  
@@ -35,25 +44,40 @@ function generateGameObject(formData: FormData) {
     return gameData
 }
 
+function generatePlayerObject(formData: FormData) {
+    const playerData: Player = {
+        name: formData.get('name') as string,
+    }
+    return playerData
+}
+
 export const Form = ( props: FormProps) => {
 
     const handleFormSubmit = (event: FormEvent) => { 
         event.preventDefault()
         const form = event.currentTarget as HTMLFormElement;
         const formData = new FormData(form);
-        let gameData = null
-
-        if (isValidFormData(formData)) {
-            gameData = generateGameObject(formData)
-
-            axios.post('http://localhost:3000/bg-objects', gameData)
-                .then(() => {
-                    console.log('Игра добавлена')
-                    props.onObjectsEdit?.()
-                    props.onClose?.()
-                })
-                .catch(error => console.log(error.message))
+        let object = null
+        
+        switch (props.dataType) {
+        case 'BoardGame':
+            if (isBoardGameValid(formData)) { object = generateGameObject(formData) }
+            break;
+            
+        case 'Player':
+            if (isPlayerValid(formData)) { object = generatePlayerObject(formData) }
+            break;
         }
+        
+        if (object != null) {
+            axios.post(props.postUrl, object)
+            .then(() => {
+                console.log('Добавлено')
+                props.onObjectsEdit?.()
+                props.onClose?.()
+            })
+            .catch(error => console.log(error.message))
+        }   
     }
 
     return <form onSubmit={handleFormSubmit} action={props.actionType} className={props.className}>

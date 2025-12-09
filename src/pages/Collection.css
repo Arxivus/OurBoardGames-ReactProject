@@ -30,7 +30,7 @@ header {
   gap: 30px;
   color: var(--main-color-dark);
   font: 400 18px Vinque;
-  text-decoration: underline;
+/*   text-decoration: underline; */
 }
 
 .logo {

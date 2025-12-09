@@ -189,5 +189,27 @@
       "owner": "Архивус",
       "priceInRubles": 2000
     }
+  ],
+  "players": [
+    {
+      "id": 1,
+      "name": "Архивус"
+    },
+    {
+      "id": 2,
+      "name": "Anahoret"
+    },
+    {
+      "id": 3,
+      "name": "CBETOqpOR"
+    },
+    {
+      "id": 4,
+      "name": "Etty007"
+    },
+    {
+      "id": "476e",
+      "name": "Aoi_Neko"
+    }
   ]
 }
