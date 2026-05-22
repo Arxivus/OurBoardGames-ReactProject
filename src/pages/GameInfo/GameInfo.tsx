@@ -1,7 +1,7 @@
 import { useLocation } from "react-router"
-import type {BoardGame} from "../components/GameCard/GameCard"
-import { GameInfoCard } from "../components/GameInfoCard/GameInfoCard"
-import { DropMenu } from '../components/DropMenu/DropMenu'
+import type {BoardGame} from "../../components/GameCard/GameCard"
+import { GameInfoCard } from "../../components/GameInfoCard/GameInfoCard"
+import { DropMenu } from "../../components/DropMenu/DropMenu"
 import './GameInfo.css'
 
 function GameInfo() {

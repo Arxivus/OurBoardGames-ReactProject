@@ -24,6 +24,7 @@
 .modalWindow-block {
     background-color: #fff;
     border-radius: 8px;
+    transition: 0.4s all;
 }
 
 .modalWindow-close {

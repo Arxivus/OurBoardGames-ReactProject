@@ -169,9 +169,9 @@
       "genre": [
         "Стратегия"
       ],
-      "players": "Битва за Рокуган",
+      "players": "1-5",
       "avgTimeInMinutes": "90",
-      "imageUrl": "/images/noimage.png",
+      "imageUrl": "/images/rokugan.jpg",
       "description": null,
       "owner": "Архивус",
       "priceInRubles": 2500
@@ -182,29 +182,58 @@
       "genre": [
         "Семейная"
       ],
-      "players": "Долина Вечности",
+      "players": "2-4",
       "avgTimeInMinutes": "90",
-      "imageUrl": "/images/noimage.png",
+      "imageUrl": "/images/vale_of_eternity.jpg",
       "description": null,
       "owner": "Архивус",
       "priceInRubles": 2000
+    },
+
+    {
+      "id": "b911",
+      "name": "Мезолит",
+      "genre": [
+        "Семейная",
+        "Сбор сетов"
+      ],
+      "players": "3-5",
+      "avgTimeInMinutes": "25",
+      "imageUrl": "/images/mesos.jpg",
+      "description": null,
+      "owner": "Архивус",
+      "priceInRubles": 3000
+    },
+    {
+      "id": "a1e1",
+      "name": "Мор. Утопия",
+      "genre": [
+        "Скрытые перемещения",
+        "Один против всех"
+      ],
+      "players": "2-4",
+      "avgTimeInMinutes": "40",
+      "imageUrl": "/images/mor.jpg",
+      "description": null,
+      "owner": "Архивус",
+      "priceInRubles": 1800
     }
   ],
   "players": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Архивус"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Anahoret"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "CBETOqpOR"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Etty007"
     },
     {
@@ -220,7 +249,8 @@
         "Etty007",
         "Anahoret",
         "CBETOqpOR"
-      ]
+      ],
+      "id": "e20c"
     },
     {
       "id": "4bd4",
@@ -234,6 +264,14 @@
         "Arxivus",
         "Etty007",
         "Anahoret"
+      ]
+    },
+    {
+      "id": "f8b7",
+      "gameName": "Битва за Рокуган",
+      "winnerName": "Aoi_Neko",
+      "playersNames": [
+        ""
       ]
     }
   ]

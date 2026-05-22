@@ -1,5 +1,5 @@
 import './DropMenu.css'
-import { Link, Route } from 'react-router';
+import { Link } from 'react-router';
 
 interface DropMenuProps {
     tabs: Array<string>;

@@ -14,13 +14,13 @@
     font-family: Vinque;
     color: var(--main-color-dark);
     padding: 10px 30px 10px 30px;
-    border-top: 3px solid var(--main-color-dark);
+    border: 3px solid var(--main-color-dark);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     background-color: var(--accent-color);
-    transition: padding-top .2s ease-in;
+    transition: 0.4s ease;
 }
 
 .dropMenu-item:hover {
-    padding-top: 50px;
+    background-color: var(--main-color-lite);
 }

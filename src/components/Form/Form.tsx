@@ -19,21 +19,16 @@ export type FormProps = {
 }
 
 function isBoardGameValid(formData: FormData) {
-    if (1 == 1) {
-        return true
-    }  
+    return true
+
 }
 
 function isPlayerValid(formData: FormData) {
-    if (1 == 1) {
-        return true
-    }  
+    return true
 }
 
 function isMatchValid(formData: FormData) {
-    if (1 == 1) {
-        return true
-    }  
+    return true  
 }
 
 function generateGameObject(formData: FormData) {
@@ -105,6 +100,6 @@ export const Form = ( props: FormProps) => {
     return <form onSubmit={handleFormSubmit} action={props.actionType} className={props.className}>
         <h2>{props.titleText}</h2>
         {props.children}
-        <button className="form-btn iconBtn" type="submit">{props.buttonText}</button>
+        <button className="form-btn" type="submit">{props.buttonText}</button>
     </form>
 }

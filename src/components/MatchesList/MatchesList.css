@@ -1,6 +1,8 @@
 .matches-list {
     display: flex;
-    gap: 45px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 40px;
 }
 
 .matches-list-item {
@@ -9,6 +11,7 @@
     flex-direction: column;
     border-radius: 8px;
     border: 1px solid var(--card-border-color);
+    background-color: var(--main-color-lite);
     font-size: 18px;
 }
 

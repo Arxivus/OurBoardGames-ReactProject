@@ -23,7 +23,7 @@
 }
 
 .players-list-item:hover {
-    background-color: var(--main-color-lite);
+    background-color: var(--accent-color-lite);
     filter: brightness(1.05);
 }
 

@@ -1,10 +1,10 @@
 import './Collection.css'
-import type { BoardGame } from '../components/GameCard/GameCard'
-import { BoardGameList } from '../components/BoardGameList/BoardGameList'
-import { IconButton } from '../components/IconButton/IconButton'
-import { DropMenu } from '../components/DropMenu/DropMenu'
-import { ModalWindow } from '../components/ModalWindow/ModalWindow'
-import { Form } from '../components/Form/Form'
+import type { BoardGame } from '../../components/GameCard/GameCard'
+import { BoardGameList } from '../../components/BoardGameList/BoardGameList'
+import { IconButton } from '../../components/IconButton/IconButton'
+import { Header } from '../../components/Header/Header'
+import { ModalWindow } from '../../components/ModalWindow/ModalWindow'
+import { Form } from '../../components/Form/Form'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
@@ -23,6 +23,19 @@ function Collection() {
       })
       .catch(error => console.log(error.message));
   }
+
+  const genresList = [
+    "Стратегия",
+    "Семейная",
+    "Евро",
+    "Аукцион",
+    "Контроль территории",
+    "Для компании",
+    "Кооператив",
+    "Ассоциации",
+    "Сбор сетов",
+    "Скрытые перемещения"
+  ]
   
   useEffect(() => { 
     getBoardGames()
@@ -30,16 +43,10 @@ function Collection() {
 
   return (
     <>
-      <header>
-        <div className='container header-items'>
-          <img className='logo' src='/images/logo.png'/>
-          <h1>Наша коллекция игр</h1>
-          <DropMenu tabs={['Коллекция', 'Статистика', 'Игроки']} routsName={['/', '/stats', '/players']}></DropMenu>
-        </div>
-      </header>
+      <Header title='Наша коллекция'></Header>
       <div className='operation-btns container'>
         <IconButton className='shadow-effect' onClick={() => {}} text='Фильтровать' iconUrl='/images/arrow.svg'></IconButton>
-        <IconButton className='shadow-effect' onClick={() => setIsOpen(true)} text='Добавить' iconUrl='/images/plus.svg'></IconButton>
+        <IconButton className='shadow-effect' onClick={() => setIsOpen(true)} text='Добавить игру'></IconButton>
       </div>
       <BoardGameList boardGames={boardGames} className='bg-library-block container'></BoardGameList>
       { isOpen? 
@@ -49,15 +56,9 @@ function Collection() {
             <input name='name' type="text" placeholder='Название'/>
             <select name='genre'>
               <option value="Жанр" disabled selected hidden>Жанр</option>
-              <option value="Стратегия">Стратегия</option>
-              <option value="Семейная">Семейная</option>
-              <option value="Евро">Евро</option>
-              <option value="Аукцион">Аукцион</option>
-              <option value="Контроль территории">Контроль территории</option>
-              <option value="Для компании">Для компании</option>
-              <option value="Кооператив">Кооператив</option>
-              <option value="Карточная">Карточная</option>
-              <option value="Ассоциации">Ассоциации</option>
+              { genresList?.map(genre => 
+                    <option value={genre}>{genre}</option>
+              )}  
             </select>
             <input name='players' type="text" placeholder='Количество игроков *-*'/>
             <input name='avgTimeInMinutes' type="number" placeholder='Среднее время партии (мин)' min={5}/>

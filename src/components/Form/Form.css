@@ -19,15 +19,17 @@ form h2 {
 }
 
 .form-btn {
-    padding: 15px 30px;
+    padding: 12px 30px;
+    font: 400 20px 'Inter-Bold';
+    color: var(--main-color-lite);
 }
 
 .bg-form input,
 .bg-form select, 
-.bg-form textarea,
-.bg-form button {
+.bg-form textarea {
     font: 400 18px 'Inter-Regular';
     color: var(--main-color-dark);
+    border: 2px solid var(--main-color-dark);
 }
 
 form input,
@@ -47,7 +49,8 @@ form button {
     font-weight: bold;
     border-radius: 8px;
     padding: 10px 20px;
-    background-color: var(--main-color-lite);
+    
+    background-color: var(--main-color-dark);
 }
 
 form input:focus-visible,
@@ -56,6 +59,5 @@ form select:focus-visible,
 form select:focus,
 form textarea:focus-visible,
 form textarea:focus {
-    border: none;
     outline: none;
 }
