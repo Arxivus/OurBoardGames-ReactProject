@@ -24,7 +24,7 @@ export const MatchesList = (props: MatchesListProps) => {
                     </div>
                     <div className="match-players">
                         <img src='/images/group-icon.png'></img>
-                        {obj.playersNames? (obj.playersNames.map((item, index) => (<p key={index}>{item}, </p>))) : (<i>Нет игроков</i>)}
+                        {obj.playersNames? (obj.playersNames.join(', ')) : (<i>Нет игроков</i>)}
                     </div>  
                 </div>
             ))

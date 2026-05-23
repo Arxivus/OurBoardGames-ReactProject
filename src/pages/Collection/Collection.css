@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .container {
-  width: 1140px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 
@@ -49,6 +49,7 @@ header {
 }
 
 .operation-btns {
+  width: 100%;
   display: flex;
   justify-content: end;
   gap: 30px;

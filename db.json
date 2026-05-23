@@ -189,7 +189,6 @@
       "owner": "Архивус",
       "priceInRubles": 2000
     },
-
     {
       "id": "b911",
       "name": "Мезолит",
@@ -253,10 +252,6 @@
       "id": "e20c"
     },
     {
-      "id": "4bd4",
-      "name": null
-    },
-    {
       "id": "da92",
       "gameName": "Битва за Рокуган",
       "winnerName": "Aoi_Neko",
@@ -267,11 +262,35 @@
       ]
     },
     {
-      "id": "f8b7",
-      "gameName": "Битва за Рокуган",
-      "winnerName": "Aoi_Neko",
+      "id": "9dbc",
+      "gameName": "Unmatched",
+      "winnerName": "Anahoret",
       "playersNames": [
-        ""
+        "Arxivus"
+      ]
+    },
+    {
+      "id": "f745",
+      "gameName": "Azul",
+      "winnerName": "Etty007",
+      "playersNames": [
+        "Arxivus"
+      ]
+    },
+    {
+      "id": "3f5e",
+      "gameName": "Azul",
+      "winnerName": "Arxivus",
+      "playersNames": [
+        "Etty007"
+      ]
+    },
+    {
+      "id": "4075",
+      "gameName": "Осколки бесконечности",
+      "winnerName": "Arxivus",
+      "playersNames": [
+        "Etty007"
       ]
     }
   ]
