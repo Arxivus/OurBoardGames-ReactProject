@@ -36,7 +36,7 @@ function generateGameObject(formData: FormData) {
     const gameData: BoardGame  = {
         name: formData.get('name') as string,
         genre: genres.split(',').map(item => item.trim()),
-        players: formData.get('name') as string,
+        players: formData.get('players') as string,
         avgTimeInMinutes: formData.get('avgTimeInMinutes') as string,
         imageUrl: "/images/noimage.png",
         description: formData.get('description') as string,

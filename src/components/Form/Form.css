@@ -2,6 +2,7 @@
 form {
     align-items: center;
     padding: 40px;
+    padding-top: 0;
     background-color: #FFF;
     border-radius: 8px;
 }

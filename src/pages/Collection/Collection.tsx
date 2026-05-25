@@ -16,38 +16,40 @@ type SelectOption = {
   label: string;
 };
 
-const genresList = [
-  { value: "", label: "Все категории" },
-  { value: "Стратегия", label: "Стратегия" },
-  { value: "Семейная", label: "Семейная" },
-  { value: "Евро", label: "Евро" },
-  { value: "Аукцион", label: "Аукцион" },
-  { value: "Контроль территории", label: "Контроль территории" },
-  { value: "Сбор сетов", label: "Сбор сетов" },
-  { value: "Скрытые перемещения", label: "Скрытые перемещения" },
-]
-
 
 function Collection() {
   const [isOpen, setIsOpen] = useState(false);
   const [boardGames, setBoardGames] = useState<BoardGame[]>()
+  const [genresList, setGenresList] = useState<SelectOption[]>([{ value: "", label: "Все категории" }])
   const [filters, setFilters] = useState({
         name: '',
         genre: '',
         price: [] as number[]
     });
 
+  const API_URL = 'http://localhost:3001/api/games'
+
   const getBoardGames = () => {
-    axios.get('http://localhost:3000/bg-objects')
+    axios.get(API_URL)
       .then(response => {
         setBoardGames(response.data)
-        console.log('Игры загружены');
+        console.log('Игры успешно загружены');
+      })
+      .catch(error => console.log(error.message));
+  }
+
+  const getGenres = () => {
+    axios.get(`${API_URL}/genres`)
+      .then(response => {
+        setGenresList(response.data)
+        console.log('Жанры успешно загружены', response.data);
       })
       .catch(error => console.log(error.message));
   }
 
   useEffect(() => {
     getBoardGames()
+    getGenres()
   }, [])
 
   const handleGenreChange = (genre: SingleValue<SelectOption>) => {

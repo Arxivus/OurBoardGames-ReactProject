@@ -73,7 +73,7 @@
 }
 
 .gameInfo .colored span:nth-child(2) {
-    background-color: var(--main-color-lite);
+    background-color: var(--accent-color);
 }
 
 .gameInfo-descr {
