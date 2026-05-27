@@ -12,7 +12,7 @@ model Player {
   name         String         @unique
   ownedGames   Game[]         @relation("GameOwner")
   matchPlayers MatchPlayer[]
-  wonMatches   Match[]        @relation("MatchWinner")  // Добавлено: обратная связь для побед
+  wonMatches   Match[]        @relation("MatchWinner")  
 }
 
 model Game {

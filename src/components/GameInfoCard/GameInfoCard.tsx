@@ -6,11 +6,17 @@ import { useNavigate } from 'react-router'
 
 export const GameInfoCard = (props: BoardGame) => {
 
+    const API_URL = 'http://localhost:3001/api/games'
     const navigate = useNavigate()
+
     function deleteGame() {
-        axios.delete(`http://localhost:3000/bg-objects/${props.id}`)
-        .then(() => {
+        const gameId = props.id
+
+        axios.delete(`${API_URL}/${gameId}`)
+        .then((response) => {
+            console.log(response.data.message)
             navigate(-1)
+            
         })
         .catch(error => console.log(error.message))
         

@@ -88,8 +88,8 @@ export const Form = ( props: FormProps) => {
         
         if (object != null) {
             axios.post(props.postUrl, object)
-            .then(() => {
-                console.log('Добавлено')
+            .then((response) => {
+                console.log(response.data.message)
                 props.onObjectsEdit?.()
                 props.onClose?.()
             })

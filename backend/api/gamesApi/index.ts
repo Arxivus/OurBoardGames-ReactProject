@@ -3,6 +3,31 @@ import { prisma } from '../../src/prisma'
 
 const router = Router()
 
+// Получаем список игроков
+router.get('/players', async (req, res) => {
+  try {
+    const players = await prisma.player.findMany({
+      orderBy: {
+        name: 'asc'
+      }
+    })
+    
+    const playerOptions = [
+      ...players.map(player => ({
+        value: player.name,
+        label: player.name
+      }))
+    ]
+    
+    res.json(playerOptions)
+    
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Ошибка загрузки игроков' })
+  }
+})
+
+// Получаем список жанров игр
 router.get('/genres', async (req, res) => {
   try {
     const genres = await prisma.genre.findMany({
@@ -20,12 +45,14 @@ router.get('/genres', async (req, res) => {
     ]
     
     res.json(genreOptions)
+
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Ошибка загрузки жанров' })
   }
 })
 
+// Получаем список игр и приводим к нужному формату
 router.get('/', async (req, res) => {
   try {
     const games = await prisma.game.findMany({
@@ -52,12 +79,14 @@ router.get('/', async (req, res) => {
     }))
 
     res.json(boardGames)
+
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Ошибка загрузки игр' })
   }
 })
 
+// Добавление игры в базу данных
 router.post('/', async (req, res) => {
   try {
     const { name, genre, players, avgTimeInMinutes, description, owner, priceInRubles, imageUrl } = req.body
@@ -100,10 +129,39 @@ router.post('/', async (req, res) => {
       }
     }
 
-    res.status(201).json(newGame)
+    res.status(201).json({
+      message: 'Игра успешно добавлена',
+      game: newGame
+    })
+
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Ошибка создания игры' })
+  }
+})
+
+// Удаление игры из базы
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+
+    const existingGame = await prisma.game.findUnique({
+      where: { id }
+    })
+
+    if (!existingGame) {
+      return res.status(404).json({ error: 'Игра не найдена' })
+    }
+
+    await prisma.game.delete({
+      where: { id }
+    })
+
+    res.status(200).json({ message: 'Игра успешно удалена', id })
+
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Ошибка удаления игры' })
   }
 })
 
