@@ -52,10 +52,46 @@ router.get('/genres', async (req, res) => {
   }
 })
 
+// Получение всех матчей
+router.get('/matches', async (req, res) => {
+  try {
+    const matches = await prisma.match.findMany({
+      include: {
+        game: true,
+        winner: true,
+        players: {
+          include: {
+            player: true
+          }
+        }
+      },
+      orderBy: {
+        id: 'desc'
+      }
+    })
+
+    const matchesData = matches.map(match => ({
+      id: match.id,
+      gameId: match.gameId,
+      gameName: match.game.name,
+      winnerId: match.winnerId,
+      winnerName: match.winner.name,
+      players: match.players.map(mp => mp.player.name),
+    }))
+
+    res.json(matchesData)
+
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Ошибка загрузки матчей' })
+  }
+})
+
 // Получаем список игр и приводим к нужному формату
 router.get('/', async (req, res) => {
   try {
     const games = await prisma.game.findMany({
+      orderBy: { id: 'asc' },
       include: {
         genres: {
           include: {

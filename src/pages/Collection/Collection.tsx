@@ -4,6 +4,7 @@ import axios from 'axios'
 import { type SingleValue } from 'react-select'
 import Select from 'react-select'
 import { selectStyles } from '../../constsnt/selectStyles'
+import { maxTimeOptions } from '../../constsnt/selectOptions'
 import { Header } from '../../components/Header/Header'
 import { IconButton } from '../../components/IconButton/IconButton'
 import { ModalWindow } from '../../components/ModalWindow/ModalWindow'
@@ -19,18 +20,18 @@ function Collection() {
   const { genresList, playersList, refreshGenres, refreshPlayers } = useData()
 
   const [filters, setFilters] = useState({
-    name: '',
     genre: '',
+    time: Infinity,
     price: [] as number[]
   })
 
   const API_URL = 'http://localhost:3001/api/games'
 
-    const getBoardGames = () => {
+  const getBoardGames = () => {
     axios.get(API_URL)
       .then(response => {
         setBoardGames(response.data)
-        console.log('Игры успешно загружены')
+        console.log('Игры успешно загружены', response.data)
       })
       .catch(error => console.log(error.message))
   }
@@ -45,10 +46,19 @@ function Collection() {
     setFilters(prev => ({ ...prev, genre: genre?.value || '' }))
   }
 
+  const handleTimeChange = (avgTimeInMinutes: SingleValue<{ value: number; label: string }>) => {
+    setFilters(prev => ({ ...prev, time: avgTimeInMinutes?.value || Infinity }))
+  }
+
   const filteredCards = useMemo(() => {
     if (!boardGames) return []
-    return boardGames.filter(game =>
-      (!filters.genre || game.genre.join(',').includes(filters.genre))
+    return boardGames.filter(game => {
+      const genre = !filters.genre || game.genre.join(',').includes(filters.genre)
+      const time = !filters.time || Number(game.avgTimeInMinutes) < filters.time 
+
+      return genre && time
+    }
+      
     )
   }, [boardGames, filters])
 
@@ -65,15 +75,26 @@ function Collection() {
 
       <div className='operation-btns container'>
         <Select
-        styles={selectStyles}
+          styles={selectStyles}
           options={genresList}
-          placeholder={'Фильтровать'}
+          placeholder={'Фильтр по жанрам'}
           onChange={handleGenreChange}
+        />
+        <Select
+          styles={selectStyles}
+          options={maxTimeOptions}
+          placeholder={'Фильтр по времени'}
+          onChange={handleTimeChange}
         />
         <IconButton className='shadow-effect' onClick={handleOpenModal} text='Добавить игру' />
       </div>
 
-      <BoardGameList boardGames={filteredCards} className='bg-library-block container' />
+      { filteredCards.length != 0 ? (
+        <BoardGameList boardGames={filteredCards} className='bg-library-block container' />
+      ) : (
+        <div className='container'>Игры не найдены...</div>
+      )
+      }
 
       {isOpen && (
         <ModalWindow onClose={handleCloseModal}>

@@ -1,18 +1,12 @@
 import './MatchesList.css'
-
-export type Match = {
-    id?: string;
-    gameName: string;
-    winnerName: string;
-    playersNames: Array<string>;
-}
+import { type Match } from '../../types/types'
 
 interface MatchesListProps {
     matches?: Array<Match>
 }
 
 export const MatchesList = (props: MatchesListProps) => {
-   
+    console.log(props.matches);
     return (<div className="matches-list">
         {props.matches? (
             props.matches.map(obj => (
@@ -24,7 +18,7 @@ export const MatchesList = (props: MatchesListProps) => {
                     </div>
                     <div className="match-players">
                         <img src='/images/group-icon.png'></img>
-                        {obj.playersNames? (obj.playersNames.join(', ')) : (<i>Нет игроков</i>)}
+                        {obj.players? (obj.players.join(', ')) : (<i>Нет игроков</i>)}
                     </div>  
                 </div>
             ))

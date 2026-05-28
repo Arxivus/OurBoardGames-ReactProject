@@ -15,3 +15,12 @@ export type BoardGame = {
     owner?: string;
     priceInRubles?: number;
 }
+
+export type Match = {
+    id?: string;
+    gameId: string;
+    gameName: string;
+    winnerId: string;
+    winnerName: string;
+    players: Array<string>;
+}

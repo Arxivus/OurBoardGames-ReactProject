@@ -6,10 +6,10 @@ export const selectStyles = {
         borderRadius: "8px",
         border: "none",
         padding: "8px 16px",
-        boxShadow: "2px 2px 8px rgba(0, 0, 0, 0.2)",
+        boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
         "&:hover": {
             border: "none",
-            boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+            boxShadow: "8px 8px 8px rgba(0, 0, 0, 0.2)",
             transition: "box-shadow .3s ease",
         },
     }),
@@ -28,6 +28,9 @@ export const selectStyles = {
         color: state.isSelected ? "white" : "black",
         padding: "8px 16px",
         fontSize: "18px",
+        "&:active": {
+            backgroundColor: 'var(--accent-color)',
+        },
     }),
 
     singleValue: (provided: any) => ({
