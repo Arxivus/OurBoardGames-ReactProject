@@ -1,5 +1,5 @@
 import { useLocation } from "react-router"
-import type {BoardGame} from "../../components/GameCard/GameCard"
+import { type BoardGame } from "../../types/types"
 import { GameInfoCard } from "../../components/GameInfoCard/GameInfoCard"
 import { DropMenu } from "../../components/DropMenu/DropMenu"
 import './GameInfo.css'

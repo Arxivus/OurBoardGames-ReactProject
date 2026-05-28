@@ -11,6 +11,9 @@ function Stats() {
   const [isOpen, setIsOpen] = useState(false);
   const [matches, setMatches] = useState<Match[]>()
 
+  const handleOpenModal = () => setIsOpen(true)
+  const handleCloseModal = () => setIsOpen(false)
+
   const getMatches = () => {
     axios.get('http://localhost:3000/matches')
       .then(response => {
@@ -36,7 +39,7 @@ function Stats() {
       <section className='container'>
         <MatchesList matches={matches}></MatchesList>
         {isOpen ?
-          (<ModalWindow onCloseModal={() => setIsOpen(false)}>
+          (<ModalWindow onClose={handleCloseModal}>
             <Form titleText='Добавить партию' buttonText='Добавить' onSubmit={() => { }} onClose={() => setIsOpen(false)} onObjectsEdit={() => getMatches()}
               dataType='Match' className='bg-form' postUrl='http://localhost:3000/matches'>
               <input name='gameName' type="text" placeholder='Название игры' />

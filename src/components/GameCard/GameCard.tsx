@@ -1,17 +1,6 @@
 import { useNavigate } from 'react-router'
+import { type BoardGame } from '../../types/types'
 
-export type BoardGame = {
-    id?: number;
-    className?: string;
-    name: string;
-    genre: Array<string>;
-    players?: string;
-    avgTimeInMinutes?: string;
-    imageUrl?: string;
-    description?: string;
-    owner?: string;
-    priceInRubles?: number;
-}
 
 export const GamePreviewCard = ( props: BoardGame ) => {
 

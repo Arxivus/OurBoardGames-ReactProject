@@ -5,14 +5,17 @@ import Stats from './pages/Stats/Stats.tsx'
 import Players from './pages/Players/Players.tsx'
 import GameInfo from './pages/GameInfo/GameInfo.tsx'
 import { Routes, Route, BrowserRouter } from 'react-router'
+import { DataProvider } from './contexts/DataContext'
 
 createRoot(document.getElementById('root')!).render(
-  <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Collection />}></Route>
-      <Route path='/stats' element={<Stats />}></Route>
-      <Route path='/players' element={<Players />}></Route>
-      <Route path='/:id' element={<GameInfo />}></Route>
-    </Routes>
-  </BrowserRouter>
+  <DataProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Collection />}></Route>
+        <Route path='/stats' element={<Stats />}></Route>
+        <Route path='/players' element={<Players />}></Route>
+        <Route path='/:id' element={<GameInfo />}></Route>
+      </Routes>
+    </BrowserRouter>
+  </DataProvider>
 )

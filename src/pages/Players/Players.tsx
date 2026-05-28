@@ -3,17 +3,22 @@ import { Header } from '../../components/Header/Header'
 import { IconButton } from '../../components/IconButton/IconButton'
 import { Form } from '../../components/Form/Form'
 import { ModalWindow } from '../../components/ModalWindow/ModalWindow'
-import { PlayersList, type Player } from '../../components/PlayersList/PlayersList'
+import { PlayersList } from '../../components/PlayersList/PlayersList'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 
 function Players() {
   const [isOpen, setIsOpen] = useState(false);
-  const [players, setPlayers] = useState<Player[]>()
+  const [players, setPlayers] = useState<[]>()
+
+  const handleOpenModal = () => setIsOpen(true)
+  const handleCloseModal = () => setIsOpen(false)
+
+  const API_URL = 'http://localhost:3001/api/games'
 
   const getPlayers = () => {
-    axios.get('http://localhost:3000/players')
+    axios.get(`${API_URL}/players`)
       .then(response => {
         setPlayers(response.data)
         console.log('Игроки загружены');
@@ -30,13 +35,12 @@ function Players() {
     <>
       <Header title='Список игроков'></Header>
       <div className='operation-btns container'>
-        <IconButton className='shadow-effect' onClick={() => { }} text='Фильтровать' iconUrl='/images/arrow.svg'></IconButton>
-        <IconButton className='shadow-effect' onClick={() => setIsOpen(true)} text='Добавить'></IconButton>
+        {/* <IconButton className='shadow-effect' onClick={handleOpenModal} text='Добавить'></IconButton> */}
       </div>
       <section className='players-block container'>
         <PlayersList players={players}></PlayersList>
         {isOpen ?
-          (<ModalWindow onCloseModal={() => setIsOpen(false)}>
+          (<ModalWindow onClose={handleCloseModal}>
             <Form titleText='Добавить игрока' buttonText='Добавить' onSubmit={() => { }} onClose={() => setIsOpen(false)} onObjectsEdit={() => getPlayers()}
               dataType='Player' className='bg-form' postUrl='http://localhost:3000/players'>
               <input name='name' type="text" placeholder='Имя игрока' />

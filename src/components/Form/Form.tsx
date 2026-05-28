@@ -1,8 +1,7 @@
 import type { FormEvent } from "react";
 import axios from 'axios'
-import "./Form.css"
+/* import "./Form.css" */
 import type { BoardGame } from "../GameCard/GameCard";
-import type { Player } from "../PlayersList/PlayersList";
 import type { Match } from "../MatchesList/MatchesList"
 
 export type FormProps = {
@@ -17,6 +16,8 @@ export type FormProps = {
     onClose?: () => void;
     onObjectsEdit?: () => void;
 }
+
+
 
 function isBoardGameValid(formData: FormData) {
     return true
@@ -46,12 +47,12 @@ function generateGameObject(formData: FormData) {
     return gameData
 }
 
-function generatePlayerObject(formData: FormData) {
-    const playerData: Player = {
+/* function generatePlayerObject(formData: FormData) {
+    const playerData: Array<Se> = {
         name: formData.get('name') as string,
     }
     return playerData
-}
+} */
 
 function generateMatchObject(formData: FormData) {
     const playersNames = formData.get('playersNames') as string
@@ -77,7 +78,7 @@ export const Form = ( props: FormProps) => {
             break;
             
         case 'Player':
-            if (isPlayerValid(formData)) { object = generatePlayerObject(formData) }
+            if (isPlayerValid(formData)) {/*  object = generatePlayerObject(formData) */ }
             break;
 
         case 'Match':

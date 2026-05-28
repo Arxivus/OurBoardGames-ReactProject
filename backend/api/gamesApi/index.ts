@@ -86,6 +86,45 @@ router.get('/', async (req, res) => {
   }
 })
 
+// Получение конкретной игры
+router.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    
+    const game = await prisma.game.findUnique({
+      where: { id },
+      include: {
+        genres: {
+          include: { genre: true }
+        },
+        owner: true
+      }
+    })
+    
+    if (!game) {
+      return res.status(404).json({ error: 'Игра не найдена' })
+    }
+    
+    const gameData = {
+      id: game.id,
+      name: game.name,
+      genre: game.genres.map(g => g.genre.name),
+      players: game.players,
+      avgTimeInMinutes: game.avgTimeInMinutes,
+      imageUrl: game.imageUrl,
+      description: game.description || '',
+      owner: game.owner.name,
+      priceInRubles: game.priceInRubles
+    }
+    
+    res.json(gameData)
+
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Ошибка загрузки игры' })
+  }
+})
+
 // Добавление игры в базу данных
 router.post('/', async (req, res) => {
   try {
@@ -162,6 +201,72 @@ router.delete('/:id', async (req, res) => {
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Ошибка удаления игры' })
+  }
+})
+
+// Обновление информации об игре
+router.patch('/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const { name, genre, players, avgTimeInMinutes, description, owner, priceInRubles, imageUrl } = req.body
+
+    const existingGame = await prisma.game.findUnique({
+      where: { id }
+    })
+
+    if (!existingGame) {
+      return res.status(404).json({ error: 'Игра не найдена' })
+    }
+
+    const ownerRecord = await prisma.player.findFirst({
+      where: { name: owner }
+    })
+
+    if (!ownerRecord) {
+      return res.status(400).json({ error: 'Владелец не найден' })
+    }
+
+    const updatedGame = await prisma.game.update({
+      where: { id },
+      data: {
+        name,
+        players,
+        avgTimeInMinutes: Number(avgTimeInMinutes),
+        imageUrl: imageUrl || '/images/noimage.png',
+        description: description || null,
+        ownerId: ownerRecord.id,
+        priceInRubles: Number(priceInRubles)
+      }
+    })
+
+    await prisma.gameGenre.deleteMany({
+      where: { gameId: id }
+    })
+
+    const genreNames = Array.isArray(genre) ? genre : [genre]
+    
+    for (const genreName of genreNames) {
+      const genreRecord = await prisma.genre.findFirst({
+        where: { name: genreName }
+      })
+
+      if (genreRecord) {
+        await prisma.gameGenre.create({
+          data: {
+            gameId: id,
+            genreId: genreRecord.id
+          }
+        })
+      }
+    }
+
+    res.status(200).json({ 
+      message: 'Игра успешно обновлена',
+      game: updatedGame 
+    })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Ошибка обновления игры' })
   }
 })
 
