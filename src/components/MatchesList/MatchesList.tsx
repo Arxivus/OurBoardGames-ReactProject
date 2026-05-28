@@ -6,7 +6,6 @@ interface MatchesListProps {
 }
 
 export const MatchesList = (props: MatchesListProps) => {
-    console.log(props.matches);
     return (<div className="matches-list">
         {props.matches? (
             props.matches.map(obj => (

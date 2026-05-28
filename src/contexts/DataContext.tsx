@@ -62,7 +62,6 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
       setLoading(true)
       setError(null)
       const response = await axios.get(`${API_URL}/matches`)
-      console.log(response.data);
       setMatchesList(response.data)
 
     } catch (err: any) {
