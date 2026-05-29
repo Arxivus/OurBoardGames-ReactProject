@@ -2,18 +2,19 @@ import { createContext, useContext, useState, useEffect, type ReactNode } from '
 import axios from 'axios'
 import { type SelectOption, type Match } from '../types/types'
 
+type Endpoint = 'genres' | 'players' | 'matches'
+
 interface DataContextType {
   genresList: SelectOption[]
   playersList: SelectOption[]
   matchesList: Match[]
   loading: boolean
   error: string | null
-  refreshGenres: () => Promise<void>
-  refreshPlayers: () => Promise<void>
-  refreshMatches: () => Promise<void>
+  refreshData: (endpoint: Endpoint) => Promise<void>
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined)
+export const API_URL = 'http://localhost:3001/api/games'
 
 export const DataProvider = ({ children }: { children: ReactNode }) => {
 
@@ -23,60 +24,38 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const API_URL = 'http://localhost:3001/api/games'
-
-  const refreshGenres = async (): Promise<void> => {
+  
+  const refreshData = async (endpoint: Endpoint): Promise<void> => {
     try {
       setLoading(true)
       setError(null)
-      const response = await axios.get(`${API_URL}/genres`)
-      setGenresList(response.data)
 
+      const response = await axios.get(`${API_URL}/${endpoint}`)
+
+      switch (endpoint) {
+        case 'genres':
+          setGenresList(response.data)
+          break
+        case 'players':
+          setPlayersList(response.data)
+          break
+        case 'matches':
+          setMatchesList(response.data)
+          break
+      }
     } catch (err: any) {
       console.error(err)
       setError(err.message)
 
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const refreshPlayers = async (): Promise<void> => {
-    try {
-      setLoading(true)
-      setError(null)
-      const response = await axios.get(`${API_URL}/players`)
-      setPlayersList(response.data)
-
-    } catch (err: any) {
-      console.error(err)
-      setError(err.message)
-      
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const refreshMatches = async (): Promise<void> => {
-    try {
-      setLoading(true)
-      setError(null)
-      const response = await axios.get(`${API_URL}/matches`)
-      setMatchesList(response.data)
-
-    } catch (err: any) {
-      console.error(err)
-      setError(err.message)
-      
     } finally {
       setLoading(false)
     }
   }
 
   useEffect(() => {
-    refreshGenres()
-    refreshPlayers()
-    refreshMatches()
+    refreshData('genres')
+    refreshData('players')
+    refreshData('matches')
   }, [])
 
   return (
@@ -86,9 +65,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
       matchesList,
       loading,
       error,
-      refreshGenres,
-      refreshPlayers,
-      refreshMatches
+      refreshData
     }}>
       {children}
     </DataContext.Provider>

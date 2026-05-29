@@ -12,12 +12,13 @@ import { GameForm } from '../../components/GameForm/GameForm'
 import { BoardGameList } from '../../components/BoardGameList/BoardGameList'
 import { type BoardGame } from '../../types/types'
 import { useData } from '../../contexts/DataContext'
+import { API_URL } from '../../contexts/DataContext'
 
 
 function Collection() {
   const [isOpen, setIsOpen] = useState(false)
   const [boardGames, setBoardGames] = useState<BoardGame[]>([])
-  const { genresList, playersList, refreshGenres, refreshPlayers } = useData()
+  const { genresList, playersList, refreshData } = useData()
 
   const [filters, setFilters] = useState({
     genre: '',
@@ -25,21 +26,20 @@ function Collection() {
     price: [] as number[]
   })
 
-  const API_URL = 'http://localhost:3001/api/games'
+
 
   const getBoardGames = () => {
     axios.get(API_URL)
       .then(response => {
         setBoardGames(response.data)
-        console.log('Игры успешно загружены', response.data)
       })
       .catch(error => console.log(error.message))
   }
 
   useEffect(() => {
     getBoardGames()
-    refreshGenres()
-    refreshPlayers()
+    refreshData('genres')
+    refreshData('players')
   }, [])
 
   const handleGenreChange = (genre: SingleValue<{ value: string; label: string }>) => {

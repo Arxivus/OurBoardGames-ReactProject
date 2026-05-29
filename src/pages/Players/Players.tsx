@@ -6,6 +6,7 @@ import { ModalWindow } from '../../components/ModalWindow/ModalWindow'
 import { PlayersList } from '../../components/PlayersList/PlayersList'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { API_URL } from '../../contexts/DataContext'
 
 
 function Players() {
@@ -14,8 +15,6 @@ function Players() {
 
   const handleOpenModal = () => setIsOpen(true)
   const handleCloseModal = () => setIsOpen(false)
-
-  const API_URL = 'http://localhost:3001/api/games'
 
   const getPlayers = () => {
     axios.get(`${API_URL}/players`)
